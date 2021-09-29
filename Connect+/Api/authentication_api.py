@@ -37,18 +37,18 @@ def new_user(data):
   
 
 
-def verify_otp(data):
-    global otp
-    user_input = data["otp"]
-    if otp == user_input:
-        print(otp,user_input)
-        add_user_to_db()
-        output = {"status": "success"}
-        return jsonify(output)
-    else:
-        print(otp,user_input)
-        output = {"status": "failed"}
-        return jsonify(output)
+# def verify_otp(data):
+#     global otp
+#     user_input = data["otp"]
+#     if otp == user_input:
+#         print(otp,user_input)
+#         add_user_to_db()
+#         output = {"status": "success"}
+#         return jsonify(output)
+#     else:
+#         print(otp,user_input)
+#         output = {"status": "failed"}
+#         return jsonify(output)
 
         
 def add_user_to_db():
@@ -79,40 +79,40 @@ def login(data):
         return({"status":"success","user_info":list(user_info[0])})
 
 
-def otp_func():
-    OTP = send_otp_mobile()
-    print(OTP)
-    return({"status":"success","otp" : OTP})
+# def otp_func():
+#     OTP = send_otp_mobile()
+#     print(OTP)
+#     return({"status":"success","otp" : OTP})
 
 
-def generateOTP() : 
-    # Declare a string variable   
-    # which stores all string  
-    string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()+_-='
-    OTP = "" 
+# def generateOTP() : 
+#     # Declare a string variable   
+#     # which stores all string  
+#     string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()+_-='
+#     OTP = "" 
 
-    length = len(string) 
-    for i in range(random.randint(5,10)) : 
-        OTP += string[math.floor(random.random() * length)] 
+#     length = len(string) 
+#     for i in range(random.randint(5,10)) : 
+#         OTP += string[math.floor(random.random() * length)] 
     
-    return OTP
+#     return OTP
 
 
-def send_otp_mobile():
-    client = clx.xms.Client(service_plan_id='7dbb615abf724082bfe34217efb937ea', token='e81b7a0c92224ebaa30b2dc9d2de215b')
-    create = clx.xms.api.MtBatchTextSmsCreate()
-    create.sender = '447537404817'
-    create.recipients = {'918124198950'}
-    otp_text = generateOTP()
-    create.body = otp_text+ " is the OTP"
+# def send_otp_mobile():
+#     client = clx.xms.Client(service_plan_id='7dbb615abf724082bfe34217efb937ea', token='e81b7a0c92224ebaa30b2dc9d2de215b')
+#     create = clx.xms.api.MtBatchTextSmsCreate()
+#     create.sender = '447537404817'
+#     create.recipients = {'918124198950'}
+#     otp_text = generateOTP()
+#     create.body = otp_text+ " is the OTP"
 
-    try:
-        batch = client.create_batch(create)
-    except (requests.exceptions.RequestException,
-        clx.xms.exceptions.ApiException) as ex:
-        print('Failed to communicate with XMS: %s' % str(ex))
+#     try:
+#         batch = client.create_batch(create)
+#     except (requests.exceptions.RequestException,
+#         clx.xms.exceptions.ApiException) as ex:
+#         print('Failed to communicate with XMS: %s' % str(ex))
 
-    return otp_text
+#     return otp_text
 
 
 def email_confirmation(receiver_mail, data):
