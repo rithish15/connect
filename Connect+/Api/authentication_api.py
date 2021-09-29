@@ -92,7 +92,7 @@ def login(data):
 #     OTP = "" 
 
 #     length = len(string) 
-#     for i in range(random.randint(5,10)) : 
+    # for i in range(random.randint(5,10)) : 
 #         OTP += string[math.floor(random.random() * length)] 
     
 #     return OTP
