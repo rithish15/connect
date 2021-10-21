@@ -211,8 +211,8 @@ def makePublic():
     uid = query_parameters.get('userid')
     fname = query_parameters.get('fname')
     print(uid,fname)
-    src_path = 'C:/Users/rithi/Desktop/Connect/server/Drive/' + uid + '/' + fname
-    dst_path = 'C:/Users/rithi/Desktop/Connect/server/Public/' + uid + '/' + fname
+    src_path = 'C:/Users/rithi/Desktop/Connect+/Connect/server/Drive/' + uid + '/' + fname
+    dst_path = 'C:/Users/rithi/Desktop/Connect+/Connect/server/Public/' + uid + '/' + fname
     print(src_path,dst_path)
     shutil.move(src_path, dst_path)
     status_code = flask.Response(status=200)
